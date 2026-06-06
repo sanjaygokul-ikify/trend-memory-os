@@ -39,7 +39,10 @@ class MemoryEngine:
 
     def _extract_facts_from_memory_node(self, memory_node: MemoryNode) -> List[Dict[str, str]]:
         # Implement fact extraction from a memory node
-        return []
+        if not memory_node.data:
+            return []
+        fact = {"key": "default_key", "value": "default_value"}
+        return [fact]
 
     def consolidate_memory(self, memory_node: MemoryNode) -> None:
         # Implement memory consolidation
