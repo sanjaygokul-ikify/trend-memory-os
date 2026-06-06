@@ -1,0 +1,6 @@
+{
+  "memory_manager": {
+    "memory_size": 1024,
+    "cache_size": 256
+  }
+}
