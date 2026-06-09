@@ -56,3 +56,15 @@ class MemoryEngine:
     def _consolidate_memory_node(self, memory_node: MemoryNode) -> None:
         # Implement memory node consolidation
         pass
+
+    def get_memory_node(self, node_id: int) -> MemoryNode:
+        # Retrieve a memory node by its ID
+        try:
+            # Find the memory node in the memory graph
+            for node in self.memory_graph.nodes:
+                if node.id == node_id:
+                    return node
+        except Exception as e:
+            logger.error(f"Error retrieving memory node: {e}")
+            raise MemoryEngineException(f"Error retrieving memory node: {e}")
+        return None
