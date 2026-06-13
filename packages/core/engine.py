@@ -68,3 +68,17 @@ class MemoryEngine:
             logger.error(f"Error retrieving memory node: {e}")
             raise MemoryEngineException(f"Error retrieving memory node: {e}")
         return None
+
+    def add_memory_node(self, memory_node: MemoryNode) -> None:
+        # Add a memory node to the memory graph
+        try:
+            # Check if the memory node already exists in the memory graph
+            for node in self.memory_graph.nodes:
+                if node.id == memory_node.id:
+                    logger.warning(f"Memory node with ID {memory_node.id} already exists in the memory graph.")
+                    return
+            # Add the memory node to the memory graph
+            self.memory_graph.add_node(memory_node)
+        except Exception as e:
+            logger.error(f"Error adding memory node: {e}")
+            raise MemoryEngineException(f"Error adding memory node: {e}")
