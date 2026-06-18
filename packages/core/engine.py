@@ -82,3 +82,15 @@ class MemoryEngine:
         except Exception as e:
             logger.error(f"Error adding memory node: {e}")
             raise MemoryEngineException(f"Error adding memory node: {e}")
+
+    def remove_memory_node(self, node_id: int) -> None:
+        # Remove a memory node from the memory graph
+        try:
+            # Find the memory node in the memory graph
+            for node in self.memory_graph.nodes:
+                if node.id == node_id:
+                    self.memory_graph.nodes.remove(node)
+                    return
+        except Exception as e:
+            logger.error(f"Error removing memory node: {e}")
+            raise MemoryEngineException(f"Error removing memory node: {e}")
