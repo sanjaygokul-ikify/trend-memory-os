@@ -55,6 +55,16 @@ class MemoryEngine:
 
     def _consolidate_memory_node(self, memory_node: MemoryNode) -> None:
         # Implement memory node consolidation
+        # Added caching to improve performance
+        if memory_node.id in self.cache:
+            return self.cache[memory_node.id]
+        # Consolidate the memory node
+        result = self._consolidate_memory_node_impl(memory_node)
+        self.cache[memory_node.id] = result
+        return result
+
+    def _consolidate_memory_node_impl(self, memory_node: MemoryNode) -> None:
+        # Implement memory node consolidation logic
         pass
 
     def get_memory_node(self, node_id: int) -> MemoryNode:
