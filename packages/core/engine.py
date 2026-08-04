@@ -57,7 +57,7 @@ class MemoryEngine:
         # Implement memory node consolidation
         # Added caching to improve performance
         if memory_node.id in self.cache:
-            return self.cache[memory_node.id]
+            return
         # Consolidate the memory node
         result = self._consolidate_memory_node_impl(memory_node)
         self.cache[memory_node.id] = result
